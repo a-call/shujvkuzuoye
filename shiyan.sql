@@ -15,36 +15,63 @@
 */
 
 SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
+SET FOREIGN_KEY_CHECKS
+= 0;
 
 -- ----------------------------
 -- Table structure for admin_table
 -- ----------------------------
 DROP TABLE IF EXISTS `admin_table`;
-CREATE TABLE `admin_table` (
-  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `password` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`ID`) USING BTREE
+CREATE TABLE `admin_table`
+(
+  `ID` int
+(10) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar
+(32) CHARACTER
+SET utf8
+COLLATE utf8_general_ci NOT NULL,
+  `password` varchar
+(32) CHARACTER
+SET utf8
+COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY
+(`ID`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of admin_table
 -- ----------------------------
 BEGIN;
-INSERT INTO `admin_table` VALUES (1, 'wangzirui', '123456');
-COMMIT;
+  INSERT INTO `
+  admin_table`
+  VALUES
+    (1, 'wangzirui', '123456');
+  COMMIT;
 
--- ----------------------------
--- Table structure for banner_table
--- ----------------------------
-DROP TABLE IF EXISTS `banner_table`;
-CREATE TABLE `banner_table` (
-  `ID` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `title` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '大标题',
-  `description` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '描述文字',
-  `href` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '点击连接',
-  PRIMARY KEY (`ID`) USING BTREE
+  -- ----------------------------
+  -- Table structure for banner_table
+  -- ----------------------------
+  DROP TABLE IF EXISTS
+`banner_table`;
+CREATE TABLE `banner_table`
+(
+  `ID` int
+(11) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar
+(32) CHARACTER
+SET utf8
+COLLATE utf8_general_ci NOT NULL COMMENT '大标题',
+  `description` varchar
+(300) CHARACTER
+SET utf8
+COLLATE utf8_general_ci NOT NULL COMMENT '描述文字',
+  `href` varchar
+(300) CHARACTER
+SET utf8
+COLLATE utf8_general_ci NOT NULL COMMENT '点击连接',
+  PRIMARY KEY
+(`ID`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
-SET FOREIGN_KEY_CHECKS = 1;
+SET FOREIGN_KEY_CHECKS
+= 1;
