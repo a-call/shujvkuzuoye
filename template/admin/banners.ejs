@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <meta charset="utf-8">
+  <style media="screen">
+    .shadow {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      opacity: 0.3;
+      filter: alpha(30);
+      left: 0;
+      top: 0;
+    }
+
+    .mod_dialog {
+      width: 1000px;
+      height: 300px;
+      background: #fff;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      margin-left: -500px;
+      margin-top: -150px;
+      padding: 20px;
+      border-radius: 20px;
+    }
+  </style>
+  <title></title>
+</head>
+
+<body>
+  <div class="page">
+    <% include components/top.inc.ejs %>
+    <div class="content-wrap">
+      <div>
+        <form action="?" method="post">
+          <div class="form-group">
+            <label for="title"> 标题：</label>
+            <input type="text" class="form-control" name="title" id="title" placeholder="标题">
+          </div>
+          <div class="form-group">
+            <label for="description"> 描述：</label>
+            <input type="text" class="form-control" name="description" id="description" placeholder="描述">
+          </div>
+          <div class="form-group">
+            <label for="href">链接：</label>
+            <input type="text" class="form-control" name="href" id="href" placeholder="链接">
+          </div>
+          <button type="submit" class="btn btn-default">添加</button>
+        </form>
+      </div>
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>标题</th>
+            <th>描述</th>
+            <th>链接</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0;i<banners.length;i++){ %>
+          <tr>
+            <td><%=banners[i].ID%></td>
+            <td><%=banners[i].title%></td>
+            <td><%=banners[i].description%></td>
+            <td><%=banners[i].href%></td>
+            <td>
+              <a href="?act=mod&id=<%=banners[i].ID%>">修改</a>
+              <a href="?act=del&id=<%=banners[i].ID%>" onclick="return confirm('你真的要删吗？')">删除</a>
+            </td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table class="table table-bordered">
+      <% if(typeof mod_data!='undefined'){ %>
+      <div class="shadow"></div>
+      <div class="mod_dialog">
+        <form action="?" method="post">
+          <input type="hidden" name="mod_id" value="<%= mod_data.ID %>" />
+          <div class="form-group">
+            <label for="title"> 标题：</label>
+            <input type="text" class="form-control" value="<%= mod_data.title %>" name="title" id="title"
+              placeholder="标题">
+          </div>
+          <div class="form-group">
+            <label for="description"> 描述：</label>
+            <input type="text" class="form-control" value="<%= mod_data.description %>" name="description"
+              id="description" placeholder="描述">
+          </div>
+          <div class="form-group">
+            <label for="href">链接：</label>
+            <input type="text" class="form-control" name="href" value="<%= mod_data.href %>" id="href" placeholder="链接">
+          </div>
+          <button type="submit" class="btn btn-default">修改</button>
+          <button href="/admin/banners" class="btn btn-default">返回</button>
+        </form>
+        <!-- <form action="?" method="post">
+          <input type="hidden" name="mod_id" value="<%= mod_data.ID %>" />
+          标题：<input type="text" name="title" value="<%= mod_data.title %>" /><br>
+          描述：<textarea name="description"><%= mod_data.description %></textarea><br>
+          链接：<input type="text" name="href" value="<%= mod_data.href %>" /><br>
+          <input type="submit" value="修改" />
+          <a href="/admin/banners">取消修改</a>
+        </form> -->
+      </div>
+      <% } %>
+    </div>
+  </div>
+</body>
+
+</html>
